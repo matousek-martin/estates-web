@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "estates-web"
+version = "0.1.0"
+description = "A serverless webapp for the estates repository."
+authors = ["Martin Matousek <mmatousek3@gatech.edu>"]
+license = "Martin Matousek <martin.matousek@outlook.com>"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.8.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
