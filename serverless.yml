@@ -1,0 +1,33 @@
+app: helloapp
+service: flask-api
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: eu-central-1
+
+functions:
+  app:
+    handler: wsgi_handler.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+      - cloudwatchLog: '/aws/lambda/hello'
+
+custom:
+  wsgi:
+    app: app.app
+    pythonBin: python3
+    packRequirements: false
+  pythonRequirements:
+    usePoetry: true
+    dockerizePip: non-linux
+
+plugins:
+  - serverless-wsgi
+  - serverless-python-requirements
+
+package:
+  patterns:
+    - '!node_modules/**'
+    - '!.venv/**'

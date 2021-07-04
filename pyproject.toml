@@ -6,7 +6,8 @@ authors = ["Martin Matousek <mmatousek3@gatech.edu>"]
 license = "Martin Matousek <martin.matousek@outlook.com>"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "3.8"
+Flask = "1.1.4"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.8.2"
