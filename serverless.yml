@@ -12,11 +12,10 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
-      - cloudwatchLog: '/aws/lambda/hello'
 
 custom:
   wsgi:
-    app: app.app
+    app: estates.app
     pythonBin: python3
     packRequirements: false
   pythonRequirements:
@@ -31,3 +30,4 @@ package:
   patterns:
     - '!node_modules/**'
     - '!.venv/**'
+    - '!notebooks/**'

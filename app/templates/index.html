@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Estates</h1>
+    {% for estate in estates %}
+    <div>
+        <p>
+            <b>{{ estate.estate_title }}</b><br>
+            {{ estate.estate_description_short }}
+        </p>
+    </div>
+    {% endfor %}
+{% endblock %}
