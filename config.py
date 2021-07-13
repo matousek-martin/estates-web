@@ -12,6 +12,7 @@ class Config(object):
     AWS_SECRET_NAME = 'estates-rds'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'security_here_is_a_joke'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    ESTATES_PER_PAGE = 10
 
     @property
     def SQLALCHEMY_DATABASE_URI(self):

@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-2 g-4 w-75">
+    <!-- Images -->
+    <div class="col">
+        <div class="card">
+            <img src="{{ images[0].estate_images }}"
+                 class="card-img-top"
+                 id="estate-img-detail"
+            >
+            <div class="card-body">
+                <h4 class="card-title">{{ estate.estate_description_short.split(';')[0] }}</h4>
+                <h5>
+                    <img src="{{ url_for('static', filename='img/house_price.png') }}" height="50px" width="50px">
+                    {% if estate.price %} {{ estate.price }} Kč {% else %} Dohodou {% endif %}
+                </h5><br>
+                <!-- Content -->
+                <h5>Detaily</h5>
+                <table class="table">
+                    <tbody>
+                        {% if estate.price %}
+                        <tr>
+                            <td>Celková cena</td>
+                            <td>{{ estate.price }} Kč</td>
+                        </tr>
+                        {% endif %}
+
+
+                        {% if estate.area_m2 %}
+                        <tr>
+                            <td>Užitná plocha</td>
+                            <td>{{ estate.area_m2 | int }} m<sup>2</sup></td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.price_details %}
+                        <tr>
+                            <td>Poznámka k ceně</td>
+                            <td>{{ estate.price_details }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.floor %}
+                        <tr>
+                            <td>Podlaží</td>
+                            <td>{{ estate.floor }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.building_type %}
+                        <tr>
+                            <td>Stavba</td>
+                            <td>{{ estate.building_type }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.building_state %}
+                        <tr>
+                            <td>Stav objektu</td>
+                            <td>{{ estate.building_state }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.efficiency %}
+                        <tr>
+                            <td>Energetická náročnost budovy</td>
+                            <td>{{ estate.efficiency }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.ownership %}
+                        <tr>
+                            <td>Vlastnictví</td>
+                            <td>{{ estate.ownership }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.furnishing %}
+                        <tr>
+                            <td>Vybavení</td>
+                            {% if estate.furnishing == 'Částečně' %}
+                            <td>{{ estate.furnishing }}</td>
+                            {% else %}
+                            <td>Ano</td>
+                            {% endif %}
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.elevator %}
+                        <tr>
+                            <td>Výtah</td>
+                            <td>{{ estate.elevator }}</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map -->
+    <div class="col">
+        <div class="card">
+            {{ map | safe }}
+            <div class="card-body">
+                <h5>Popis</h5>
+                <p class="card-text">{{ estate.estate_description_long }}</p>
+                {% if estate.seller_name %}
+                <h5>Kontakt - {{ estate.seller_name }}</h5>
+                <table class="table">
+                    <tbody>
+                        {% if estate.seller_numbers %}
+                        <tr>
+                            <td>Telefon</td>
+                            <td>+{{ estate.seller_numbers[0] }}</td>
+                        </tr>
+                        {% endif %}
+                        {% if estate.seller_email %}
+                        <tr>
+                            <td>E-mail</td>
+                            <td>{{ estate.seller_email }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.seller_web %}
+                        <tr>
+                            <td>Web</td>
+                            <td>{{ estate.seller_web }}</td>
+                        </tr>
+                        {% endif %}
+
+                        {% if estate.seller_address %}
+                        <tr>
+                            <td>Adresa</td>
+                            <td>{{ estate.seller_address }}</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

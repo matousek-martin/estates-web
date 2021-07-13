@@ -9,9 +9,11 @@ provider:
 functions:
   app:
     handler: wsgi_handler.handler
+    timeout: 15
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+
 
 custom:
   wsgi:
@@ -21,10 +23,14 @@ custom:
   pythonRequirements:
     usePoetry: true
     dockerizePip: non-linux
+  apigwBinary:
+    types:
+      - '*/*'
 
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
+  - serverless-apigw-binary
 
 package:
   patterns:

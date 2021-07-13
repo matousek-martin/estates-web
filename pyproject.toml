@@ -8,10 +8,10 @@ license = "Martin Matousek <martin.matousek@outlook.com>"
 [tool.poetry.dependencies]
 python = "3.8"
 Flask = "1.1.4"
-Flask-Bootstrap = "^3.3.7"
 boto3 = "^1.17.105"
 psycopg2-binary = "^2.9.1"
 Flask-SQLAlchemy = "^2.5.1"
+folium = "^0.12.1"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.8.2"

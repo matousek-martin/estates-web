@@ -1,13 +1,57 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Estates</h1>
+    <!-- Estates -->
     {% for estate in estates %}
-    <div>
-        <p>
-            <b>{{ estate.estate_title }}</b><br>
-            {{ estate.estate_description_short }}
-        </p>
+    <a href="{{ url_for('detail', estate_id=estate.estate_id) }}" class="fill-div">
+    <div class="card w-50 flex-row animated fadeIn shadow-sm">
+        <!-- Images -->
+        <img class="card-img-left example-card-img-responsive"
+             src="{{ images[estate.estate_id][0] }}"
+             id="estate-img-index"
+        />
+
+        <!-- Description -->
+        <div class="card-body">
+            <h4 class="card-title h5 h4-sm">{{ estate.estate_title }}</h4>
+
+            <p class="card-text">
+                {{ estate.estate_description_short.split(';')[0] }}<br>
+                <h4><span class="house_price">
+                    <img src="{{url_for('static', filename='img/house_price.png')}}" height="50px" width="50px">
+                    {% if estate.price %} {{ estate.price }} Kč {% else %} Dohodou {% endif %}
+                </span></h4>
+            </p>
+        </div>
     </div>
+    </a>
+    <br>
     {% endfor %}
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <!-- Previous -->
+            {% if prev_url %}
+            <li class="page-item">
+                <a class="page-link" href="{{ prev_url }}">Předchozí</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Předchozí</a>
+            </li>
+            {% endif %}
+
+            <!-- Next -->
+            {% if next_url %}
+            <li class="page-item">
+                <a class="page-link" href="{{ next_url }}">Další</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Další</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
 {% endblock %}

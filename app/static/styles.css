@@ -1,0 +1,44 @@
+div.card {
+    margin: auto;
+}
+
+a.fill-div {
+    text-decoration: none;
+    color: black;
+}
+
+div.row {
+    margin: auto;
+}
+
+#estate-img-index {
+    max-width:250px;
+    max-height:180px;
+    width: auto;
+    height: auto;
+}
+
+#estate-img-detail {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.house_price {
+    display: inline-block;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.navbar {
+    margin-bottom: 2rem;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+    display:inline-block;
+    float: none;
+}
